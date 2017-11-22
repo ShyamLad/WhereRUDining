@@ -13,7 +13,6 @@ class DiningHallTableViewController: UITableViewController {
     var dhall = [DiningHall]()
     var selected: Int?
     var selectedVC:MealViewController?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -102,8 +101,14 @@ class DiningHallTableViewController: UITableViewController {
         
         self.selected = indexPath.row
         
+      
         let svc = self.selectedVC?.viewControllers![0] as! BreakfastTableViewController
+        let svc2 = self.selectedVC?.viewControllers![1] as! LunchTableViewController
+        let svc3 = self.selectedVC?.viewControllers![2] as! DinnerTableViewController
+        
         svc.DHall = self.dhall[self.selected!]
+        svc2.DHall = self.dhall[self.selected!]
+        svc3.DHall = self.dhall[self.selected!]
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -123,19 +128,19 @@ class DiningHallTableViewController: UITableViewController {
     
     private func loadDiningHalls() {
         
-        guard let hall1 =  DiningHall(name:"Brower Commons") else {
+        guard let hall1 =  DiningHall(name: "Brower", fullName:"Brower Commons") else {
             fatalError("Unable to instantiate meal1")
         }
         
-        guard let hall2 = DiningHall(name:"Busch Dining Hall") else {
+        guard let hall2 = DiningHall(name: "Busch" , fullName:"Busch Dining Hall") else {
             fatalError("Unable to instantiate meal2")
         }
         
        
-        guard let hall3 = DiningHall(name:"Livingston Dining Commons") else {
+        guard let hall3 = DiningHall(name: "Livingston", fullName:"Livingston Dining Commons") else {
             fatalError("Unable to instantiate meal2")
         }
-        guard let hall4 = DiningHall(name:"Neilson Dining Hall") else {
+        guard let hall4 = DiningHall(name: "Neilson", fullName:"Neilson Dining Hall") else {
             fatalError("Unable to instantiate meal2")
         }
         

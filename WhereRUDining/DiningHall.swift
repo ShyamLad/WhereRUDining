@@ -20,6 +20,7 @@ class DiningHall {
         var itemsInMeal: [String]
     }
     var name: String
+    var fullName: String
     var breakfast = [mealObj]()
     var lunch = [mealObj]()
     var dinner = [mealObj]()
@@ -28,7 +29,7 @@ class DiningHall {
     
     //MARK: Initialization
     
-    init?(name: String) {
+    init?(name: String, fullName: String) {
         
         // Initialization should fail if there is no name or if the rating is negative.
         // The name must not be empty
@@ -39,6 +40,7 @@ class DiningHall {
         
         // Initialize stored properties.
         self.name = name
+        self.fullName = fullName
         
         //MARK: JSON
         DataManager.getTopAppsDataFromItunesWithSuccess { (data) -> Void in
@@ -57,7 +59,7 @@ class DiningHall {
                    return
             }
             
-            while locName != self.name{
+            while locName != self.fullName{
                 json?.removeFirst()
 //                print(json)
                 guard let firstTemp = json?.first,
